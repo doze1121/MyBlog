@@ -124,3 +124,10 @@ STATIC_DIR = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Конфигурация сервера электронной почты
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'doze1121@gmail.com'
+EMAIL_HOST_PASSWORD = 'czzw eclh hjcl nyfv'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
