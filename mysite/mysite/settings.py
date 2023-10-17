@@ -12,22 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
-from decouple import config
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3utz=974we@0)pu1sr1yr**d4xr^6$3wa-mt#-xck!sf2pesov'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -119,7 +105,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIR = [os.path.join(BASE_DIR, 'static')]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -128,8 +114,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Конфигурация сервера электронной почты
 
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'doze1121@gmail.com'
+EMAIL_HOST_PASSWORD = 'czzw eclh hjcl nyfv'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    from .prod_settings import *
